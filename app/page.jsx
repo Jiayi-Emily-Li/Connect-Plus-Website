@@ -1,5 +1,6 @@
 import Main from "./Main/Main";
 import About from "./[components]/About/About"
+import Programs from "./[components]/Programs/Programs"
 
 export default function Home() {
     return (
@@ -12,11 +13,11 @@ export default function Home() {
             <About />
         </section>
 
-        {/* <section id="programs">
+       <section id="programs">
             <Programs />
         </section>
 
-        <section id="courses">
+         {/* <section id="courses">
             <Courses />
         </section>
 

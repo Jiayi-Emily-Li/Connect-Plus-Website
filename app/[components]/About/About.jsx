@@ -13,7 +13,7 @@ export default function About(){
                     src={Logo}
                     alt="ConnectPlus Logo"/>
             </div>
-            <div className=" lg:flex lg:space-x-10 space-y-10 lg:space-y-0">
+            <div className="w-full md:w-3/4 flex overflow-x-scroll space-x-3">
                 <div className="p-3 bg-[#2778b5] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
                         Who We Are
@@ -48,6 +48,7 @@ export default function About(){
                         debate lessons, and social opportunities, hosting over 9500 courses.
                     </p>
                 </div>
+                
                 
             </div>
         </Layout>
