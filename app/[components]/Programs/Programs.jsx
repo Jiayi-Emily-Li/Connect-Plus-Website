@@ -21,27 +21,30 @@ export default function Programs() {
                 </div>
                 <div className="p-3 bg-[#2778b5] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
-                        Debating
+                        TBB
                     </h2>
                     <p className="text-[18px]">
-                        ConnectPlus is working with Speechc&Debate Academy to present
-                        spontaneous argumentation (SPAR) courses. Speech&Debate Academy
-                        is a charitable organization based in San Diego, California, USA,
-                        dedicated to providing high-quality and accessible debate education.
-                        All tutors from Speech & Debate Academy are highly qualified and
-                        recognized professional debaters. Contact them through info@
-                        learnspeechanddebate.com for more information.
+                        ConnectPlus is dedicated to making education accessible to all, including people
+                        with special needs. In the TangBaoBao (TBB) Program, ConnectPlus partners with
+                        multiple local nonprofit organizations in China to offer specialized English courses
+                        for children with Down’s Syndrome. Tutors for the TBB Program are required to
+                        undergo additional training to better suit the needs of our students. In comparison
+                        to 1V1 classes, classes of the TBB Program are more structured and more need-
+                        sensitive.
                     </p>
                 </div>
                 <div className="p-3 bg-[#2778b5] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
-                        Writing
+                        WeConnect
                     </h2>
                     <p className="text-[18px]">
-                        HSE Humanities Series is designed to help students explore various humanities subjects in a liberal-arts
-                        education style. In our small, engaging classrooms, students will gain plenty of individual attention and chances
-                        for participation,discussion, and debate. The humanities course series focuses heavily on writing and reading in
-                        order to train students’ critical thinking skills, as well as advanced English usage.
+                        WeConnect is an online social opportunity aimed at connecting high
+                        school students going through the college application process with
+                        current college/ university students. Through our livestream info
+                        session, livestream college interviews, short videos, and other social
+                        media activities, participants will gain firsthand information of
+                        college application and college experiences, including school
+                        statistics, academics, social life, and much more.
                     </p>
                 </div>
                 

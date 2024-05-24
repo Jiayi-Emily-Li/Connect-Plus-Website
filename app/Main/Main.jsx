@@ -6,13 +6,19 @@ import Layout from "../[components]/Layout/Layout"
 
 export default function Main() {
     return(
-        <Layout className="space-y-5 md:space-y-3 h-auto md:h-screen text-center">
-            <BackgroundCircles />
-            <Image
-                className="rounded-full h-[500px] w-[500px] md:h-[250px] md:w-[250px] -z-50 mx-auto object-cover"
-                src={Logo}
-                priority={true}
-                alt="ConnectPlus Logo" />
+        <Layout>
+           
+            <div className="relative flex justify-center items-center min-h-screen bg-[#a6bee2]">
+                <div className="relative z-10">
+                <BackgroundCircles /> 
+                    <Image
+                        className="bg-[#a6bee2] rounded-full h-[500px] w-[500px] md:h-[250px] md:w-[250px] -z-50 mx-auto object-cover"
+                        src={Logo}
+                        priority={true}
+                        alt="ConnectPlus Logo" />
+                </div>
+            </div>
+            
         </Layout>
             
         
