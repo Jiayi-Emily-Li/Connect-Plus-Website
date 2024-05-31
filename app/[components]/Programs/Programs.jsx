@@ -2,12 +2,12 @@ import Layout from "../../[components]/Layout/Layout"
 
 export default function Programs() {
     return (
-        <Layout className="flex-col space-y-10">
+        <Layout className="flex-col space-y-10 justify-center items-center w-full p-8 md:p-24">
             <div className="flex flex-col justify-center items-center space-y-3">
                 <h1>Programs</h1>
             </div>
             <div className="w-full md:w-3/4 flex overflow-x-scroll space-x-3" >
-                <div className="p-3 bg-[#2778b5] rounded-lg">
+                <div className="p-3 bg-[#a6bee2] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
                         HSE
                     </h2>
@@ -19,7 +19,7 @@ export default function Programs() {
                         learning.
                     </p>
                 </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
+                <div className="p-3 bg-[#a6bee2] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
                         TBB
                     </h2>
@@ -33,7 +33,7 @@ export default function Programs() {
                         sensitive.
                     </p>
                 </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
+                <div className="p-3 bg-[#a6bee2] rounded-lg">
                     <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
                         WeConnect
                     </h2>
