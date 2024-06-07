@@ -3,15 +3,15 @@ import Layout from "../../[components]/Layout/Layout"
 export default function Programs() {
     return (
         <Layout className="flex-col space-y-10">
-            <div className="flex flex-col justify-center items-center space-y-3">
-                <h1>Programs</h1>
+            <div className="flex flex-row justify-center items-center space-y-3">
+                <h1 className="font-bold text-3xl md:text-4xl mt-4">Programs</h1>
             </div>
-            <div className="w-full md:w-3/4 flex overflow-x-scroll space-x-3" >
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
+            <div className="max-w-6xl mx-auto flex flex-col justify-center md:flex-row md:space-x-4 px-4 py-6" >
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 text-center bg-[#2778b5] rounded-lg">
+                    <h2 className="font-bold text-2xl mb-5 text-white">
                         HSE
                     </h2>
-                    <p className="text-[18px]">
+                    <p className="text-[18px] text-white">
                         Huishuo English (HSE), ConnectPlus’ most original program, is
                         dedicated to make English education accessible for more. We believe
                         that connecting with people is the best way to learn, and that
@@ -19,11 +19,11 @@ export default function Programs() {
                         learning.
                     </p>
                 </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 text-center bg-[#2778b5] rounded-lg">
+                    <h2 className="font-bold text-2xl mb-5 text-white">
                         TBB
                     </h2>
-                    <p className="text-[18px]">
+                    <p className="text-[18px] text-white">
                         ConnectPlus is dedicated to making education accessible to all, including people
                         with special needs. In the TangBaoBao (TBB) Program, ConnectPlus partners with
                         multiple local nonprofit organizations in China to offer specialized English courses
@@ -31,20 +31,6 @@ export default function Programs() {
                         undergo additional training to better suit the needs of our students. In comparison
                         to 1V1 classes, classes of the TBB Program are more structured and more need-
                         sensitive.
-                    </p>
-                </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
-                        WeConnect
-                    </h2>
-                    <p className="text-[18px]">
-                        WeConnect is an online social opportunity aimed at connecting high
-                        school students going through the college application process with
-                        current college/ university students. Through our livestream info
-                        session, livestream college interviews, short videos, and other social
-                        media activities, participants will gain firsthand information of
-                        college application and college experiences, including school
-                        statistics, academics, social life, and much more.
                     </p>
                 </div>
                 

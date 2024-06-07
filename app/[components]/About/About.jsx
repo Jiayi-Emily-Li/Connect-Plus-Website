@@ -6,29 +6,29 @@ export default function About(){
     return(
         <Layout className="flex-col space-y-10">
             <div className="flex flex-row justify-center items-center space-x-20">
-                <h1>About Us</h1>
+                <h1 className="font-bold text-3xl md:text-4xl">About Us</h1>
                 <Image 
-                    className="h-[500px] w-[500px] md:h-[100px] md:w-[100px] -z-50 mx-auto object-cover"
+                    className="h-[100px] w-[100px] md:h-[100px] md:w-[100px] -z-50 mx-auto object-cover"
                     priority={true}
                     src={Logo}
                     alt="ConnectPlus Logo"/>
             </div>
-            <div className="w-full md:w-3/4 flex overflow-x-scroll space-x-3">
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:space-x-4 p-4">
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#2778b5] rounded-lg text-center">
+                    <h2 className="font-bold text-2xl mb-5 text-white">
                         Who We Are
                     </h2>
-                    <p className="text-[18px]">
+                    <p className="text-[18px] text-white">
                         ConnectPlus is a 501(c)3 nonprofit organization based in Virginia
                         dedicated to promoting mutual learning by connecting individuals of
                         distinct backgrounds yet similar interests.
                     </p>
                 </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#2778b5] rounded-lg text-center">
+                    <h2 className="font-bold text-2xl mb-5 text-white">
                         What We Provide
                     </h2>
-                    <p className="text-[18px]">
+                    <p className="text-[18px] text-white">
                         We are always looking for partnerships with more volunteers, interns,
                         school clubs, and other organizations who share our vision to make our
                         services accessible to more in need. We are happy to provide the following:
@@ -37,11 +37,11 @@ export default function About(){
                         be put in college applications and resumes for other purposes.
                     </p>
                 </div>
-                <div className="p-3 bg-[#2778b5] rounded-lg">
-                    <h2 className="!text-lg !tracking-[5px] mb-5 px-10 !decoration-white">
+                <div className="flex flex-col items-center p-6 bg-[#2778b5] rounded-lg m-3 md:m-0 text-center">
+                    <h2 className="font-bold text-2xl mb-5 text-white">
                         When We Found
                     </h2>
-                    <p className="text-[18px]">
+                    <p className="text-[18px] text-white">
                         ConnectPlus was founded in 2020 with the goal of bridging people
                         across cultural, language, and geographical barriers. As of December
                         2022, we have connected over 1300 people for general English lessons,
