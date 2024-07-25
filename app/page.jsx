@@ -1,4 +1,4 @@
-import Main from "./Main/Main";
+import Main from "./Main/Main"
 import About from "./[components]/About/About"
 import Programs from "./[components]/Programs/Programs"
 import SignIn from "./[components]/SignIn/Register"
@@ -22,14 +22,6 @@ export default function Home() {
         <section id="signin">
             <SignIn />
         </section>
-
-         {/* <section id="courses">
-            <Courses />
-        </section>
-
-        <section id="scheduling">
-            <Scheduling />
-        </section> */}
        </>
     );
 };

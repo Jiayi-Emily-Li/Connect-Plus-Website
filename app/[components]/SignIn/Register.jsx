@@ -31,6 +31,7 @@ const Register = () => {
                         name="name"
                         value={person.name}
                         onChange={handleChange}
+                        required
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200"
                     />
                 </div>
@@ -42,6 +43,7 @@ const Register = () => {
                         name="age"
                         value={person.age}
                         onChange={handleChange}
+                        required
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200"
                     />
                 </div>
