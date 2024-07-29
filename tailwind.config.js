@@ -12,6 +12,17 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        'lilac': '#EF94EF',
+        'skyblue': '#87CEEB',
+        'sandstone': '#FFE599',
+        'navyblue': '#161B4F'
+      },
+      fontFamily: {
+       primaryTitle: ["MONTSERRAT"],
+       secondaryTitle: ["Lexend"],
+       body: ["Nunito"]
+      },
     },
   },
   plugins: [],
