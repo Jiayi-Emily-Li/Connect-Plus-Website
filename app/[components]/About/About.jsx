@@ -4,7 +4,7 @@ import Layout from "../../[components]/Layout/Layout"
 
 export default function About(){
     return(
-        <Layout className="flex-col space-y-10 justify-center items-center w-full p-8 md:p-24">
+        <Layout className="flex-col space-y-10">
             <div className="flex flex-row justify-center items-center space-x-20">
                 <h1 className="font-primaryTitle font-bold uppercase text-3xl md:text-4xl animate-bounce-in underline underline-offset-8">About Us</h1>
                 <Image 
@@ -13,10 +13,9 @@ export default function About(){
                     src={Logo}
                     alt="ConnectPlus Logo"/>
             </div>
-
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:space-x-4 p-4">
-                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#161B4F] hover:bg-gradient-to-r from-navyblue to-lilac cursor-pointer rounded-lg text-center">
-                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5 text-white">
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#161B4F] transition ease-in-out delay-150 hover:bg-gradient-to-tr from-skyblue to-lilac cursor-pointer rounded-lg text-center text-white hover:text-black">
+                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5">
                         Who We Are
                     </h2>
                     <p className="font-body font-medium text-[18px]">
@@ -25,8 +24,8 @@ export default function About(){
                         distinct backgrounds yet similar interests.
                     </p>
                 </div>
-                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#161B4F] hover:bg-gradient-to-tr from-navyblue from-10% to-lilac cursor-pointer rounded-lg text-center">
-                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5 text-white">
+                <div className="flex flex-col items-center p-6 m-3 md:m-0 bg-[#161B4F] transition ease-in-out delay-150 hover:bg-gradient-to-tr from-skyblue to-lilac cursor-pointer rounded-lg text-center text-white hover:text-black">
+                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5">
                         What We Provide
                     </h2>
                     <p className="font-body font-medium text-[18px]">
@@ -38,8 +37,8 @@ export default function About(){
                         be put in college applications and resumes for other purposes.
                     </p>
                 </div>
-                <div className="flex flex-col items-center p-6 bg-[#161B4F] rounded-lg m-3 md:m-0 text-center hover:bg-gradient-to-tr from-navyblue from-10% to-lilac cursor-pointer">
-                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5 text-white">
+                <div className="flex flex-col items-center p-6 bg-[#161B4F] rounded-lg m-3 md:m-0 text-center transition ease-in-out delay-150 hover:bg-gradient-to-tr from-skyblue to-lilac cursor-pointer text-white hover:text-black">
+                    <h2 className="font-secondaryTitle font-bold text-2xl mb-5">
                         When We Found
                     </h2>
                     <p className="font-body font-medium text-[18px]">
