@@ -12,28 +12,3 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
-model Student {
-  student_id    Int     @id @default(autoincrement())
-  student_name  String
-  age           Int
-  wechat_id     String  @unique
-  region        String
-  join_time     String?
-  study_goal    String
-  prefered_time String
-  frequency     Int
-  english_level String
-  tutor         Tutor   @relation(fields: [tutorId], references: [tutor_id])
-  tutorId       Int     @unique
-}
-
-model Tutor {
-  tutor_id      Int       @id @default(autoincrement())
-  tutor_name    String
-  age           Int
-  grade         Int
-  residence     String
-  english_level String
-  students      Student[]
-}
