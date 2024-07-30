@@ -23,6 +23,24 @@ module.exports = {
        secondaryTitle: ["Lexend"],
        body: ["Nunito"]
       },
+      animation: {
+        'fade-in': 'fadeIn 5s ease-in-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      },
+      animation: {
+        'bounce-in': 'bounceIn 4s ease',
+      },
+      keyframes: {
+        bounceIn: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-15px)' },
+        },
+      },
     },
   },
   plugins: [],
