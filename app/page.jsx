@@ -22,6 +22,9 @@ export default function Home() {
         <section id="courses">
             <Courses />
         </section> 
+        {/* <section id="courses">
+            <Register />
+        </section>  */}
 
         {/* <section id="scheduling">
             <Scheduling />
