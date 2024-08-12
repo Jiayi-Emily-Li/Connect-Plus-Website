@@ -24,17 +24,18 @@ export default function Register(){
         <Layout className="flex flex-col">
             <Container size="1" pb="4" pt="9">
                 <Flex direction="column" pb="4" gap="4">
-                    <Heading>Sign in</Heading>
+                    <Heading>Create an account</Heading>
                 </Flex>
 
                 <Flex gap="4" direction="column">
 
-                    <Card variant="classic">
+                    {/* <Card > */}
 
                         <form 
-                            className="flex flex-col space-y-3"
+                            className="flex flex-col space-y-4"
                             onSubmit={handleSubmit(onSubmit)}>
                             <TextField.Root 
+                                size="3"
                                 placeholder='Username' 
                                 {...register('username', {
                                     required: "Username is required",
@@ -44,6 +45,7 @@ export default function Register(){
                                     <div className="text-red-500">{errors.username.message}</div>
                                 )}
                             <TextField.Root 
+                                size="3"
                                 placeholder='Password' 
                                 {...register('password', {
                                     required: "Password is required",
@@ -57,6 +59,7 @@ export default function Register(){
                                     <div className="text-red-500">{errors.password.message}</div>
                                 )}
                             <TextField.Root 
+                                size="3"
                                 placeholder='Email' 
                                 {...register('email', {
                                     required: "Email is required",
@@ -73,7 +76,7 @@ export default function Register(){
                                 )}
                             <Button variant="soft" size="3">Register</Button>
                         </form>
-                    </Card>
+                    {/* </Card> */}
                 </Flex>
             </Container>
             

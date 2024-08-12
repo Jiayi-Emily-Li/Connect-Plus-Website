@@ -54,9 +54,9 @@ const Navbar = () => {
                     duration={500}
                     onClick={() => setNavbar(!navbar)}>{link.label}</Link>)}
                 <li className="flex justify-center mt-10 md:mt-0">
-                  <Link href="/register" passHref >
+                  <Link href="/signin" passHref >
                     <button className="text-base md:text-xs lg:text-base font-bold text-[#000000] py-4 md:py-3 px-6 text-center md:border-b-0 hover:bg-[#87CEEB] border-[#87CEEB] bg-[#87CEEB] hover:bg-gradient-to-r from-skyblue to-lilac cursor-pointer rounded-md hover:text-[#000000] md:hover:border-b-[#ffffff]">
-                      Register/Sign in
+                      Sign in
                     </button>
                   </Link>
                 </li>
