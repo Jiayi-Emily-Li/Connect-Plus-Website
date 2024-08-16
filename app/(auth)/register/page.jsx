@@ -1,10 +1,10 @@
 'use client';
 import React from 'react'
-import Layout from "../[components]/Layout/Layout"
+import Layout from "../../[components]/Layout/Layout"
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
 import { ref, push } from 'firebase/database';
-import { database } from '../firebaseConfig';
+import { database } from '../../firebaseConfig';
 
 
 export default function Register(){

@@ -1,11 +1,11 @@
 'use client';
 import React from 'react'
-import Layout from "../[components]/Layout/Layout"
+import Layout from "../../[components]/Layout/Layout"
 import Link from "next/link";
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
 import { ref, push, query, get, orderByChild, equalTo } from 'firebase/database';
-import { database } from '../firebaseConfig';
+import { database } from '../../firebaseConfig';
 
 export default function Signin() {
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
