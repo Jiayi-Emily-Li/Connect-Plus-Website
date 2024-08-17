@@ -5,10 +5,13 @@ import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/the
 import { useForm } from 'react-hook-form'
 import { ref, push } from 'firebase/database';
 import { database } from '../../firebaseConfig';
+import { useRouter } from 'next/navigation'
+
 
 
 export default function Register(){
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const router = useRouter();
 
     const onSubmit = async (data) => {
         try{
@@ -17,68 +20,71 @@ export default function Register(){
             reset(); 
         } catch (error){
             console.error(error);
-        }
+        } 
     };
 
     return (
-        <Layout className="flex flex-col">
-            <Container size="1" pb="4" pt="9">
-                <Flex direction="column" pb="4" gap="4">
-                    <Heading>Create an account</Heading>
-                </Flex>
+        <Layout className="flex flex-col items-center justify-center min-h-screen">
+            <div className="w-full max-w-md">
 
-                <Flex gap="4" direction="column">
+                <Container size="1" pb="4">
+                    <Flex direction="column" pb="4" gap="4">
+                        <Heading>Create an account</Heading>
+                    </Flex>
 
-                    {/* <Card > */}
+                    <Flex gap="4" direction="column">
 
-                        <form 
-                            className="flex flex-col space-y-4"
-                            onSubmit={handleSubmit(onSubmit)}>
-                            <TextField.Root 
-                                size="3"
-                                placeholder='Username' 
-                                {...register('username', {
-                                    required: "Username is required",
-                                })} 
-                                type="text"></TextField.Root>
-                                {errors.username && (
-                                    <div className="text-red-500">{errors.username.message}</div>
-                                )}
-                            <TextField.Root 
-                                size="3"
-                                placeholder='Password' 
-                                {...register('password', {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 8,
-                                        message: "Password must have at least 8 characters"
-                                    },
-                                })} 
-                                type="password"></TextField.Root>
-                                {errors.password && (
-                                    <div className="text-red-500">{errors.password.message}</div>
-                                )}
-                            <TextField.Root 
-                                size="3"
-                                placeholder='Email' 
-                                {...register('email', {
-                                    required: "Email is required",
-                                    validate: (value) => {
-                                        if(!value.includes("@")){
-                                            return "Email must include @";
-                                        }
-                                        return true;
-                                    },
-                                })} 
-                                type="text"></TextField.Root>
-                                {errors.email && (
-                                    <div className="text-red-500">{errors.email.message}</div>
-                                )}
-                            <Button variant="soft" size="3">Register</Button>
-                        </form>
-                    {/* </Card> */}
-                </Flex>
-            </Container>
+                        {/* <Card > */}
+
+                            <form 
+                                className="flex flex-col space-y-4"
+                                onSubmit={handleSubmit(onSubmit)}>
+                                <TextField.Root 
+                                    size="3"
+                                    placeholder='Username' 
+                                    {...register('username', {
+                                        required: "Username is required",
+                                    })} 
+                                    type="text"></TextField.Root>
+                                    {errors.username && (
+                                        <div className="text-red-500">{errors.username.message}</div>
+                                    )}
+                                <TextField.Root 
+                                    size="3"
+                                    placeholder='Password' 
+                                    {...register('password', {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 8,
+                                            message: "Password must have at least 8 characters"
+                                        },
+                                    })} 
+                                    type="password"></TextField.Root>
+                                    {errors.password && (
+                                        <div className="text-red-500">{errors.password.message}</div>
+                                    )}
+                                <TextField.Root 
+                                    size="3"
+                                    placeholder='Email' 
+                                    {...register('email', {
+                                        required: "Email is required",
+                                        validate: (value) => {
+                                            if(!value.includes("@")){
+                                                return "Email must include @";
+                                            }
+                                            return true;
+                                        },
+                                    })} 
+                                    type="text"></TextField.Root>
+                                    {errors.email && (
+                                        <div className="text-red-500">{errors.email.message}</div>
+                                    )}
+                                <Button variant="soft" size="3" onClick={() => router.push('/dashboard')}>Register</Button>
+                            </form>
+                        {/* </Card> */}
+                    </Flex>
+                </Container>
+            </div>
             
         </Layout>
     )

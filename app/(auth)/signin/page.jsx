@@ -48,54 +48,57 @@ export default function Signin() {
     };
 
     return (
-        <Layout className="flex flex-col">
-            <Container size="1" pb="4" pt="9">
-                <Flex direction="column" pb="4" gap="4">
-                    <Heading>Sign in</Heading>
-                </Flex>
+        <Layout className="flex flex-col items-center justify-center min-h-screen">
+            <div  className="w-full max-w-md">
 
-                <Flex gap="4" direction="column">
+                <Container size="1" pb="4">
+                    <Flex direction="column" pb="4" gap="4">
+                        <Heading>Sign in</Heading>
+                    </Flex>
 
-                    {/* <Card > */}
+                    <Flex gap="4" direction="column">
 
-                        <form 
-                            className="flex flex-col space-y-4"
-                            onSubmit={handleSubmit(onSubmit)}>
-                            <TextField.Root 
-                                size="3"
-                                placeholder='Email' 
-                                {...register('email', {
-                                    required: "Email is required",
-                                })} 
-                                type="text"></TextField.Root>
-                                {errors.email && (
-                                    <div className="text-red-500">{errors.email.message}</div>
-                                )}
-                            <TextField.Root 
-                                size="3"
-                                placeholder='Password' 
-                                {...register('password', {
-                                    required: "Password is required",
-                                    minLength: {
-                                        value: 8,
-                                        message: "Password must have at least 8 characters"
-                                    },
-                                })} 
-                                type="password"></TextField.Root>
-                                {errors.password && (
-                                    <div className="text-red-500">{errors.password.message}</div>
-                                )}
-                            
-                            <Flex gap="4" direction="row" justify="end">
-                                <Link href="/register" passHref>
-                                    <Button variant="soft" size="3">Create an account</Button>
-                                </Link>
-                                <Button variant="classic" size="3" type="submit">Sign in</Button>
-                            </Flex>
-                        </form>
-                    {/* </Card> */}
-                </Flex>
-            </Container>
+                        {/* <Card > */}
+
+                            <form 
+                                className="flex flex-col space-y-4"
+                                onSubmit={handleSubmit(onSubmit)}>
+                                <TextField.Root 
+                                    size="3"
+                                    placeholder='Email' 
+                                    {...register('email', {
+                                        required: "Email is required",
+                                    })} 
+                                    type="text"></TextField.Root>
+                                    {errors.email && (
+                                        <div className="text-red-500">{errors.email.message}</div>
+                                    )}
+                                <TextField.Root 
+                                    size="3"
+                                    placeholder='Password' 
+                                    {...register('password', {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 8,
+                                            message: "Password must have at least 8 characters"
+                                        },
+                                    })} 
+                                    type="password"></TextField.Root>
+                                    {errors.password && (
+                                        <div className="text-red-500">{errors.password.message}</div>
+                                    )}
+                                
+                                <Flex gap="4" direction="row" justify="end">
+                                    <Link href="/register" passHref>
+                                        <Button variant="soft" size="3">Create an account</Button>
+                                    </Link>
+                                    <Button variant="classic" size="3" type="submit">Sign in</Button>
+                                </Flex>
+                            </form>
+                        {/* </Card> */}
+                    </Flex>
+                </Container>
+            </div>
             
         </Layout>
     )
