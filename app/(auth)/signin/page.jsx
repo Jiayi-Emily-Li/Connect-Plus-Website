@@ -6,9 +6,11 @@ import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/the
 import { useForm } from 'react-hook-form'
 import { ref, push, query, get, orderByChild, equalTo } from 'firebase/database';
 import { database } from '../../firebaseConfig';
+import { useRouter } from 'next/navigation';
 
 export default function Signin() {
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const router = useRouter();
 
     const onSubmit = async (data) => {
         try{
@@ -92,7 +94,7 @@ export default function Signin() {
                                     <Link href="/register" passHref>
                                         <Button variant="soft" size="3">Create an account</Button>
                                     </Link>
-                                    <Button variant="classic" size="3" type="submit">Sign in</Button>
+                                    <Button variant="classic" size="3" onClick={() => router.push('/dashboard')}>Sign in</Button>
                                 </Flex>
                             </form>
                         {/* </Card> */}
