@@ -4,8 +4,11 @@ import Layout from "../../[components]/Layout/Layout"
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
 import { ref, push } from 'firebase/database';
-import { database } from '../../firebaseConfig';
+import {  doc, setDoc} from 'firebase/firestore';
+import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
+import { database, auth } from '../../firebaseConfig';
 import { useRouter } from 'next/navigation';
+import { registerUserAction } from "@/data/actions/auth-actions";
 
 
 
@@ -15,12 +18,35 @@ export default function Register(){
 
     const onSubmit = async (data) => {
         try{
-            const reference = ref(database, 'users'); 
-            await push(reference, data);
-            reset(); 
-        } catch (error){
-            console.error(error);
-        } 
+            const userCredential =  await createUserWithEmailAndPassword(auth, data.email, data.password)
+            const user = userCredential.user;
+            const userData = {
+                email: data.email,
+                password: data.password,
+                username: data.username
+            };
+            const docRef = doc(database, "users", user.uid);
+            await setDoc(docRef, userData);
+            router.push('/dashboard');
+
+        } catch(error) {
+            if(error.code === 'auth/email-already-in-use'){
+                alert("The email address is already in use. Please try sign in with this email.");
+            }
+            else{
+                console.error(error);
+                alert("Error during creating an account, please try again.");
+                const user = auth.currentUser;
+                if(user){
+                    try{
+                        await deleteUser(user);
+                        console.log("User deleted from Firebase due to Firestore failure");
+                    } catch(deleteError){
+                        console.error(deleteError);
+                    }
+                }
+            }
+        }
     };
 
     return (
@@ -38,7 +64,9 @@ export default function Register(){
 
                             <form 
                                 className="flex flex-col space-y-4"
+                                action={registerUserAction}
                                 onSubmit={handleSubmit(onSubmit)}>
+
                                 <TextField.Root 
                                     size="3"
                                     placeholder='Username' 
@@ -79,7 +107,7 @@ export default function Register(){
                                     {errors.email && (
                                         <div className="text-red-500">{errors.email.message}</div>
                                     )}
-                                <Button variant="soft" size="3" onClick={() => router.push('/dashboard')}>Register</Button>
+                                <Button type="submit" variant="soft" size="3" >Register</Button>
                             </form>
                         {/* </Card> */}
                     </Flex>

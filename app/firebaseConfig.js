@@ -1,10 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDhIBfMzuF393jDg7Zy5mcaSngVxeqOTM",
   authDomain: "connectplus-e1582.firebaseapp.com",
-  databaseURL: "https://connectplus-e1582-default-rtdb.firebaseio.com/",
   projectId: "connectplus-e1582",
   storageBucket: "connectplus-e1582.appspot.com",
   messagingSenderId: "395602561095",
@@ -13,5 +13,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-export { database };
+const database = getFirestore(app);
+const auth = getAuth(app);
+export { database, auth };

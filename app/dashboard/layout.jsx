@@ -22,7 +22,7 @@ export default function DashboardLayout({ children }) {
                 href="/dashboard/account"
               >
                 <PersonIcon className="h-4 w-4" />
-                Account
+                Profile
               </Link>
             </nav>
           </div>
