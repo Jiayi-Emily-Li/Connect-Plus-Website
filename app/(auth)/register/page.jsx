@@ -3,7 +3,6 @@ import React from 'react'
 import Layout from "../../[components]/Layout/Layout"
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
-import { ref, push } from 'firebase/database';
 import {  doc, setDoc} from 'firebase/firestore';
 import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
 import { database, auth } from '../../firebaseConfig';
