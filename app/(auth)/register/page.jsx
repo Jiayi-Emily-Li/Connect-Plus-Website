@@ -17,7 +17,7 @@ export default function Register(){
 
     const onSubmit = async (data) => {
         try{
-            const userCredential =  await createUserWithEmailAndPassword(auth, data.email, data.password)
+            const userCredential =  await createUserWithEmailAndPassword(auth, data.email, data.password);
             const user = userCredential.user;
             const userData = {
                 email: data.email,

@@ -4,9 +4,9 @@ import Layout from "../../[components]/Layout/Layout"
 import Link from "next/link";
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
-import { ref, push, query, get, orderByChild, equalTo } from 'firebase/database';
-import { database } from '../../firebaseConfig';
+import { database, auth } from '../../firebaseConfig';
 import { useRouter } from 'next/navigation';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Signin() {
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
@@ -14,39 +14,22 @@ export default function Signin() {
 
     const onSubmit = async (data) => {
         try{
-            const reference = ref(database, 'users'); 
-            //const emailQuery = query(reference, orderByChild('email'), equalTo(data.email));
-            const snapshot = await get(reference);
-
-            if(snapshot.exists()){
-                const users = snapshot.val();
-                let userFound = null;
-                Object.keys(users).forEach(userId => {
-                    if (users[userId].email === data.email) {
-                      userFound = users[userId];
-                    }
-                  });
-
-                if(userFound){
-                    const isPasswordValid = (data.password === userFound.password) ? true : false;
-                    if(isPasswordValid){
-                        console.log('User signed in successfully:', userFound);
-                        alert('Signed in successfully.');
-                    }
-                    else{
-                        alert('Invalid password.');
-                    }
-                }
-                else{
-                    alert('User not found.');
-                }
-                
-            }
+            const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+            const user = userCredential.user;
+            alert("Signed in successfully.");
+            localStorage.setItem('loggedInUserId', user.uid);
+            router.push('/dashboard');
             
         } catch (error){
-            console.error(error);
+            if(error.code === 'auth/invalid-credential'){
+                alert("The Email and/or password you specified are not correct.");
+            }
+            else{
+                console.error(error);
+                alert("Account does not exist.");
+            }
+            
         }
-        reset();
     };
 
     return (
