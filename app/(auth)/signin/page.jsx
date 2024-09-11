@@ -22,7 +22,7 @@ export default function Signin() {
             
         } catch (error){
             if(error.code === 'auth/invalid-credential'){
-                alert("The Email and/or password you specified are not correct.");
+                alert("The email and/or password you specified are not correct.");
             }
             else{
                 console.error(error);
@@ -77,7 +77,7 @@ export default function Signin() {
                                     <Link href="/register" passHref>
                                         <Button variant="soft" size="3">Create an account</Button>
                                     </Link>
-                                    <Button variant="classic" size="3" onClick={() => router.push('/dashboard')}>Sign in</Button>
+                                    <Button variant="classic" size="3">Sign in</Button>
                                 </Flex>
                             </form>
                         {/* </Card> */}
