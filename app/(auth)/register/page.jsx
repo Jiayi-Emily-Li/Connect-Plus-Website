@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from "../../[components]/Layout/Layout"
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
-import {  doc, setDoc} from 'firebase/firestore';
+import { doc, setDoc} from 'firebase/firestore';
 import { createUserWithEmailAndPassword, deleteUser } from 'firebase/auth';
 import { database, auth } from '../../firebaseConfig';
 import { useRouter } from 'next/navigation';
@@ -26,7 +26,7 @@ export default function Register(){
             };
             const docRef = doc(database, "users", user.uid);
             await setDoc(docRef, userData);
-            router.push('/dashboard');
+            alert("You've created an account successfully. Please sign in.")
 
         } catch(error) {
             if(error.code === 'auth/email-already-in-use'){

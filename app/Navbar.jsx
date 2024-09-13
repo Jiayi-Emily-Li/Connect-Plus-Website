@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { database, auth } from './firebaseConfig';
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from 'firebase/firestore';
+
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const links = [
@@ -14,6 +18,23 @@ const Navbar = () => {
     { label: 'Become a tutor', href: '#tutor' },
     { label: 'Contact us', href: '#contact' },
   ]
+  let userData;
+
+  onAuthStateChanged(auth, (user) => {
+    const loggedInUserId = localStorage.getItem('loggerInUserId');
+    if(loggedInUserId){
+      const docRef = doc(database, "users", loggedInUserId);
+      getDoc(docRef)
+      .then((docSnap) => {
+        if(docSnap.exsists()){
+          userData = docSnap.data();
+          console.log(userData);
+        }
+      })
+    }
+   
+  })
+
   return (
     <div>
       <nav className="w-full bg-[#161B4F] top-0 left-0 right-0 z-50">
@@ -54,11 +75,12 @@ const Navbar = () => {
                     duration={500}
                     onClick={() => setNavbar(!navbar)}>{link.label}</Link>)}
                 <li className="flex justify-center mt-10 md:mt-0">
-                  <Link href="/signin" passHref >
+                  {userData ? userData.username : <Link href="/signin" passHref >
                     <button className="text-base md:text-xs lg:text-base font-bold text-[#000000] py-4 md:py-3 px-6 text-center md:border-b-0 hover:bg-[#87CEEB] border-[#87CEEB] bg-[#87CEEB] hover:bg-gradient-to-r from-skyblue to-lilac cursor-pointer rounded-md hover:text-[#000000] md:hover:border-b-[#ffffff]">
                       Sign in
                     </button>
-                  </Link>
+                  </Link>}
+                  
                 </li>
               </ul>
             </div>
