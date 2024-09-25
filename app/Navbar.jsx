@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import Cookies from 'js-cookie';
+import { useState, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { database, auth } from './firebaseConfig';
-import { onAuthStateChanged } from "firebase/auth";
+import { database } from './firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 
 const Navbar = () => {
@@ -18,22 +18,44 @@ const Navbar = () => {
     { label: 'Become a tutor', href: '#tutor' },
     { label: 'Contact us', href: '#contact' },
   ]
-  let userData;
 
-  onAuthStateChanged(auth, (user) => {
-    const loggedInUserId = localStorage.getItem('loggerInUserId');
-    if(loggedInUserId){
-      const docRef = doc(database, "users", loggedInUserId);
-      getDoc(docRef)
-      .then((docSnap) => {
-        if(docSnap.exsists()){
-          userData = docSnap.data();
-          console.log(userData);
-        }
-      })
+  async function getUsername(userID) {
+    if(!userID){
+      console.error("UserID is null");
+      return null;
     }
-   
-  })
+    try{
+      const userDocRef = doc(database, 'users', userID);
+      const userDoc = await getDoc(userDocRef);
+  
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        const userName = userData.username;
+        console.log("Retrieved username: ", userName);
+        return userName;
+      } else {
+        throw new Error("No such document!");
+      }
+    } catch(error){
+      console.error(error);
+    }
+    
+  }
+
+  const [loggedInUserName, setLoggedInUserName] = useState(null);
+
+  useEffect(() => {
+    // Fetch the user ID from the cookie
+    const userID = Cookies.get('userID');
+    if (userID) {
+      // Fetch the username using the userID
+      getUsername(userID).then((userName) => {
+        setLoggedInUserName(userName);
+      }).catch((error) => {
+        console.error("Error fetching username:", error);
+      });
+    }
+  }, []); 
 
   return (
     <div>
@@ -75,11 +97,19 @@ const Navbar = () => {
                     duration={500}
                     onClick={() => setNavbar(!navbar)}>{link.label}</Link>)}
                 <li className="flex justify-center mt-10 md:mt-0">
-                  {userData ? userData.username : <Link href="/signin" passHref >
-                    <button className="text-base md:text-xs lg:text-base font-bold text-[#000000] py-4 md:py-3 px-6 text-center md:border-b-0 hover:bg-[#87CEEB] border-[#87CEEB] bg-[#87CEEB] hover:bg-gradient-to-r from-skyblue to-lilac cursor-pointer rounded-md hover:text-[#000000] md:hover:border-b-[#ffffff]">
-                      Sign in
-                    </button>
-                  </Link>}
+                  {loggedInUserName ? (
+                    <Link href="/dashboard" passHref >
+                      <button className="text-base md:text-xs lg:text-base font-bold text-[#000000] py-4 md:py-3 px-6 text-center md:border-b-0 hover:bg-[#87CEEB] border-[#87CEEB] bg-[#87CEEB] hover:bg-gradient-to-r from-skyblue to-lilac cursor-pointer rounded-md hover:text-[#000000] md:hover:border-b-[#ffffff]">
+                        {loggedInUserName}
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link href="/signin" passHref >
+                      <button className="text-base md:text-xs lg:text-base font-bold text-[#000000] py-4 md:py-3 px-6 text-center md:border-b-0 hover:bg-[#87CEEB] border-[#87CEEB] bg-[#87CEEB] hover:bg-gradient-to-r from-skyblue to-lilac cursor-pointer rounded-md hover:text-[#000000] md:hover:border-b-[#ffffff]">
+                        Sign in
+                      </button>
+                  </Link>
+                  )}
                   
                 </li>
               </ul>

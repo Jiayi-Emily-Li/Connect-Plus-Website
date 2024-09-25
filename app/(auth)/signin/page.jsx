@@ -2,9 +2,10 @@
 import React from 'react'
 import Layout from "../../[components]/Layout/Layout"
 import Link from "next/link";
+import Cookies from 'js-cookie';
 import { TextField, Button, Card, Container, Heading, Flex } from '@radix-ui/themes'
 import { useForm } from 'react-hook-form'
-import { database, auth } from '../../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -17,7 +18,7 @@ export default function Signin() {
             const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
             const user = userCredential.user;
             alert("Signed in successfully.");
-            localStorage.setItem('loggedInUserId', user.uid);
+            Cookies.set("userID", user.uid, {expires: 7});
             router.push('/dashboard');
             
         } catch (error){
