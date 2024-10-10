@@ -1,7 +1,17 @@
+'use client'
 import Link from "next/link";
-import { DashboardIcon, PersonIcon } from '@radix-ui/react-icons'
+import { DashboardIcon, PersonIcon, ExitIcon } from '@radix-ui/react-icons';
+import { destroyCookie } from 'nookies';
 
 export default function DashboardLayout({ children }) {
+  const logout = () => {
+    try{
+      destroyCookie(null, 'userID', { path: '/' });
+    } catch(error){
+      console.error(error);
+    }
+  }
+
   return (
     <div className="h-screen grid grid-cols-[240px_1fr]">
       <nav className="border-r bg-gray-100/40 dark:bg-gray-800/40">
@@ -19,10 +29,17 @@ export default function DashboardLayout({ children }) {
             <nav className="grid items-start px-4 text-sm font-medium">
               <Link
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                href="/dashboard/account"
+                href="/dashboard/profile"
               >
                 <PersonIcon className="h-4 w-4" />
                 Profile
+              </Link>
+              <Link
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                href="/"
+              >
+                <ExitIcon className="h-4 w-4" />
+                <button onClick={logout}>Logout</button>
               </Link>
             </nav>
           </div>
