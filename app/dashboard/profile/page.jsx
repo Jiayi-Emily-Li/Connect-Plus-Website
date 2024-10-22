@@ -1,9 +1,18 @@
 'use client';
-import { TextField, Flex, Button, TextArea} from '@radix-ui/themes';
+import { TextField, Flex, Button, TextArea, DropdownMenu} from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { optimizeFonts } from '@/next.config';
 
 export default function profile(){
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const dropDownOptions = ["A1 (Beginner)", "A2 (Elemantry)", "B1 (Intermediate)", 
+                                "B2 (Upper intermediate)", "C1 (Advanced)", "C2 (Proficient)"];
+    const [dropdown, setDropdown] = useState("CEFR English Level");
+    const handleSelect = (option) => {
+        setDropdown(option); 
+    };
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 p-4">
             Profile Page
@@ -59,7 +68,7 @@ export default function profile(){
                         )}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                     <TextField.Root 
                             size="3"
                             placeholder='WeChat ID' 
@@ -70,19 +79,26 @@ export default function profile(){
                             {errors.wechat && (
                                 <div className="text-red-500">{errors.wechat.message}</div>
                             )}
-                </div>
 
-                <div className="grid grid-cols-1 gap-4">
-                    <TextField.Root 
-                            size="3"
-                            placeholder='CEFR English Level' 
-                            {...register('level', {
-                                required: "English Level is required",
-                            })} 
-                            type="text"></TextField.Root>
-                            {errors.level && (
-                                <div className="text-red-500">{errors.level.message}</div>
-                            )}
+                    <DropdownMenu.Root>
+                        <DropdownMenu.Trigger>
+                            <Button color="gray" variant="surface" size="3">
+                                {dropdown}
+                                <DropdownMenu.TriggerIcon />
+                            </Button>
+                        </DropdownMenu.Trigger>
+                        <DropdownMenu.Content>
+                            {dropDownOptions.map((option, index) => (
+                                <DropdownMenu.Item 
+                                key={index}
+                                onSelect={() => handleSelect(option)}>
+                                    {option}
+                                </DropdownMenu.Item>
+                            ))}
+                            
+                        </DropdownMenu.Content>
+                    </DropdownMenu.Root>
+
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
