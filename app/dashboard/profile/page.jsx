@@ -2,6 +2,9 @@
 import { TextField, Flex, Button, TextArea, DropdownMenu} from '@radix-ui/themes';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import  Cookies from 'js-cookie';
+import { doc, updateDoc} from 'firebase/firestore';
+import { database } from '../../firebaseConfig';
 import { optimizeFonts } from '@/next.config';
 
 export default function profile(){
@@ -13,11 +16,37 @@ export default function profile(){
         setDropdown(option); 
     };
 
+    const onSubmit = async (data) => {
+        try{
+            const userID = Cookies.get('userID');
+            if(userID){
+                const userDocRef = doc(database, 'users', userID);
+            
+                const userData = {
+                    first_name: data.firstname,
+                    last_name: data.lastname,
+                    age: data.age,
+                    wechat_id: data.wechat, 
+                };
+    
+                await updateDoc(userDocRef, userData);
+                alert("You've updated your profile.");
+            }
+            else{
+                console.log("there's no userID in cookies");
+            }
+           
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 p-4">
             Profile Page
             <form 
-                className="flex flex-col space-y-4 col-span-3">
+                className="flex flex-col space-y-4 col-span-3"
+                onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid grid-cols-2 gap-4">
                     <TextField.Root
                         size="3"
@@ -59,7 +88,7 @@ export default function profile(){
                     <TextField.Root 
                         size="3"
                         placeholder='Age' 
-                        {...register('lastname', {
+                        {...register('age', {
                             required: "Age is required",
                         })} 
                         type="text"></TextField.Root>

@@ -26,7 +26,7 @@ export default function Register(){
             };
             const docRef = doc(database, "users", user.uid);
             await setDoc(docRef, userData);
-            alert("You've created an account successfully. Please sign in.")
+            alert("You've created an account successfully. Please sign in.");
 
         } catch(error) {
             if(error.code === 'auth/email-already-in-use'){
