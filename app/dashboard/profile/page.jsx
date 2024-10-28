@@ -5,34 +5,43 @@ import { useState } from 'react';
 import  Cookies from 'js-cookie';
 import { doc, updateDoc} from 'firebase/firestore';
 import { database } from '../../firebaseConfig';
-import { optimizeFonts } from '@/next.config';
 
 export default function profile(){
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const dropDownOptions = ["A1 (Beginner)", "A2 (Elemantry)", "B1 (Intermediate)", 
                                 "B2 (Upper intermediate)", "C1 (Advanced)", "C2 (Proficient)"];
+
     const [dropdown, setDropdown] = useState("CEFR English Level");
-    const handleSelect = (option) => {
+
+    //GET USER INFO
+    const userID = Cookies.get('userID');
+    const userDocRef = doc(database, 'users', userID);
+
+    const handleSelect = async (option) => {
         setDropdown(option); 
+        if(userID){
+            await updateDoc(userDocRef, {
+                cefr_level: option,
+            });
+        }
     };
 
     const onSubmit = async (data) => {
         try{
-            const userID = Cookies.get('userID');
             if(userID){
-                const userDocRef = doc(database, 'users', userID);
-            
                 const userData = {
                     first_name: data.firstname,
                     last_name: data.lastname,
                     age: data.age,
                     wechat_id: data.wechat, 
+                    goal: data.goal,
                 };
     
                 await updateDoc(userDocRef, userData);
                 alert("You've updated your profile.");
             }
             else{
+                alert("Cannot find profile");
                 console.log("there's no userID in cookies");
             }
            
@@ -120,7 +129,8 @@ export default function profile(){
                             {dropDownOptions.map((option, index) => (
                                 <DropdownMenu.Item 
                                 key={index}
-                                onSelect={() => handleSelect(option)}>
+                                onSelect={() => handleSelect(option)}
+                                >
                                     {option}
                                 </DropdownMenu.Item>
                             ))}
@@ -134,7 +144,13 @@ export default function profile(){
                     <TextArea
                         size="3"
                         placeholder='Please write down your study goals'
-                    ></TextArea>
+                        {...register('goal', {
+                            required: "Study goal is required",
+                        })} 
+                        type="text"></TextArea>
+                        {errors.goal && (
+                             <div className="text-red-500">{errors.goal.message}</div>
+                        )}
                 </div>
                 
                 
