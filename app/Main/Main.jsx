@@ -17,7 +17,7 @@ export default function Main() {
                         priority={true}
                         alt="ConnectPlus Logo" />
                 </div> */}
-                <Image src={background} alt="hero-image" className="w-[100%] h-[100%] md:h-[100%] md:w-[100%] object-cover"/>
+                {/* <Image src={background} alt="hero-image" className="w-[100%] h-[100%] md:h-[100%] md:w-[100%] object-cover"/> */}
             </div>
             
         </Layout>

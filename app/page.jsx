@@ -3,14 +3,17 @@ import About from "./[components]/About/About"
 import Programs from "./[components]/Programs/Programs"
 import Courses from "./[components]/Courses/Courses";
 import GoToTopButton from './[components]/GoToTopButton';
+import Hero from "./[components]/Hero/Hero";
 
 export default function Home() {
     return (
        <>
-        <section id="main">
-            <Main />
+        <section id="hero">
+            <Hero />
         </section>
-
+        {/* <section id="main">
+            <Main />
+        </section> */}
         <section id="about">
             <About />
         </section>
