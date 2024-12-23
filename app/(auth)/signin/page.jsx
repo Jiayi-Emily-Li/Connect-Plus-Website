@@ -39,7 +39,7 @@ export default function Signin() {
 
                 <Container size="1" pb="4">
                     <Flex direction="column" pb="4" gap="4">
-                        <Heading> Student Sign in</Heading>
+                        <Heading> Sign in</Heading>
                     </Flex>
 
                     <Flex gap="4" direction="column">
@@ -78,13 +78,6 @@ export default function Signin() {
                                 <Button variant="classic" size="3">Sign in</Button>
                             </Flex>
 
-                            <Flex gap="4" direction="row" justify="end">
-                                <Link href="/register" passHref >
-                                    <div className="text-[#0000FF]">
-                                        Are you a tutor? Please sign in here
-                                    </div>
-                                </Link>
-                            </Flex>
                         </form>
                     </Flex>
                 </Container>
